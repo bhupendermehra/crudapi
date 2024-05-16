@@ -10,16 +10,18 @@ class ProductsController extends Controller
     public function adding(Request $request)
     {
         // Validate the incoming request data
-        $items = $request->validate([
-            'name' => 'required|string',
-            'price' => 'required|string',
-            'quantity' => 'required|numeric',
-            // Add more validation rules as needed
-        ]);
+        // $items = $request->validate([
+        //     'name' => 'required|string',
+        //     'price' => 'required|string',
+        //     'quantity' => 'required|numeric',
+        //     'Decription' => 'required|numeric',
+        //     // Add more validation rules as needed
+        // ]);
         $items = new Products();
         $items->name = $request->name;
         $items->price = $request->price;
         $items->quantity = $request->quantity;
+        $items->description = $request->description;
 
         $items->save();
         // Return a response indicating success
@@ -32,6 +34,7 @@ class ProductsController extends Controller
         $items->name = $request->name;
         $items->price = $request->price;
         $items->quantity = $request->quantity;
+        $items->description = $request->description;
 
         $items->update();
         return response()->json('Product Updated successfully');
